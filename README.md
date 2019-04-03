@@ -7,9 +7,9 @@
 <h5>Database: materias</h5>
 <h5>Collection: turmas</h5>
 
-***Todos os direitos reservados Joao Victor Baesso®***
-
 <h3>UNOESC- Xanxere</h3>
+
+***Todos os direitos reservados Joao Victor Baesso®***
 
 
 

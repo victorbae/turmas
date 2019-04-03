@@ -1,0 +1,26 @@
+<turma nome="TADS2">
+	<alunos>
+		<aluno>
+			<nome>André</nome>
+			<disciplinas>
+				<disciplina codigo="1" nome="BD">
+					<nota>9.0</nota>
+				</disciplina>
+				<disciplina codigo="2" nome="POO">
+					<nota>7.0</nota>
+				</disciplina>
+			</disciplinas>
+		</aluno>
+		<aluno>
+			<nome>Joaquim</nome>
+			<disciplinas>
+				<disciplina codigo="1" nome="BD">
+					<nota>9.0</nota>
+				</disciplina>
+				<disciplina codigo="2" nome="POO">
+					<nota>7.0</nota>
+				</disciplina>
+			</disciplinas>
+		</aluno>
+	</alunos>
+</turma>

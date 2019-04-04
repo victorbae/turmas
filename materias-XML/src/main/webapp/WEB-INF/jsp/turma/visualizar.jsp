@@ -36,28 +36,50 @@
 		<div class="container">
 
 			<div class="row justify-content-sm-center">
-				<h2 class="display-3 text-center" style="margin-top: 33px; margin-bottom: 33px;">Alunos classe ${turma.nome}</h2>
+				<h2 class="display-4 text-center" style="margin-top: 33px; margin-bottom: 6px;">Classe ${turma.nome}</h2>
+			</div>	
+			<div class="row justify-content-sm-center">
+				<h4 class="h4 text-center" style="margin-top: 6px; margin-bottom: 3px;">Média da turma: ${turma.media}</h4>
 			</div>	
 			
-			<div class="row justify-content-sm-center">
-				<div class="col-md-9">
+			<div class="row justify-content-sm-center"  style="margin-top: 6px; margin-bottom: 9px;">
+				<div class="col">
+				<h3 class="h3 text-center">Disciplinas</h3>
+					<table class="table table-striped table-bordered table-hover">
+							<thead>
+								<tr>
+									<th class="col-xs-8">Disciplinas</th>
+									<th class="col-xs-8">Médias</th>
+								</tr>
+							</thead>
+						<tbody>
+							<c:forEach items="${turma.disciplinas}" var="dss" varStatus="index">
+								<tr class="pega-clique">
+									<td>${dss.nome}</td>
+									<td>${dss.media}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>				
+				<div class="col">
+				<h3 class="h3 text-center">Alunos</h3>
 					<c:forEach items="${turma.alunos.alunos}" var="aluno" varStatus="index">
 						<table class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
-										<th colspan="2" class="col-xs-8">Nome / Matérias</th>
-										<th scope="col" class="col-xs-4">Media</th>
+										<th colspan="3" class="col-xs-8">Aluno / Disciplinas</th>
 									</tr>
 								</thead>
 							<tbody>
 								<tr class="pega-clique table-primary">
 									<td colspan="2" >${aluno.nome}</td>
-									<td>${aluno.media}</td>
+									<td>Média: ${aluno.media}</td>
 								</tr>
 								<c:forEach items="${aluno.disciplinas.disciplina}" var="dsss">
 									<tr class="pega-clique" >
 										<td colspan="2"  style="padding-left: 42px;" >${dsss.nome}</td>
-										<td>${dsss.nota}</td>
+										<td>Nota: ${dsss.nota}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -65,8 +87,6 @@
 					</c:forEach>
 				</div>				
 			</div>	
-		
 		</div>
-
 	</body>
 </html>

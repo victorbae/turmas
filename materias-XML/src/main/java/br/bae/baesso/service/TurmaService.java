@@ -3,6 +3,8 @@ package br.bae.baesso.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -24,7 +26,7 @@ public class TurmaService {
 	}
 
 	public void salvar(Turma turma) {
-		Turma turmaPunkRock = atualizaMediasTurma(turma);
+		Turma turmaPunkRock = buildTurma(turma);
 
 		turmaPunkRock.setCodigo(this.geraCodigo());
 
@@ -40,12 +42,21 @@ public class TurmaService {
 		return repository.findOne(codigoTurma);
 	}
 
-	public Turma atualizaMediasTurma(Turma turma) {
+	public Turma buildTurma(Turma turma) {
 		Turma turmaPunk = new Turma();
+		Set<Disciplina> meupau = new TreeSet<>();
+
+		for (Aluno aluno : turma.getAlunos().getAlunos()) {
+			for (Disciplina disciplina : aluno.getDisciplinas().getDisciplina()) {
+				meupau.add(disciplina);
+			}
+		}
 
 		turmaPunk = calculaMediaTurma(turma);
 		turmaPunk.setAlunos(calculaMediaCadaAluno(turma.getAlunos()));
-//	TODO	turmaPunk.calculaMediaDisciplina(turma.getAlunos());
+		// TODO turmaPunk.calculaMediaDisciplina(turma.getAlunos());
+
+		turmaPunk.setDisciplinas(meupau);
 		return turmaPunk;
 	}
 

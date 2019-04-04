@@ -17,7 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Disciplina {
+public class Disciplina implements Comparable<Disciplina> {
 
 	@XmlAttribute
 	private Long codigo;
@@ -30,4 +30,14 @@ public class Disciplina {
 
 	private Double media;
 
+	@Override
+	public int compareTo(Disciplina o) {
+		if (this.codigo < o.getCodigo()) {
+			return -1;
+		}
+		if (this.codigo > o.getCodigo()) {
+			return 1;
+		}
+		return 0;
+	}
 }

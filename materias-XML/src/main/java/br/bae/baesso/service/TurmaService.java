@@ -1,5 +1,6 @@
 package br.bae.baesso.service;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -59,7 +60,7 @@ public class TurmaService {
 			somaMedia += aluno.getMedia() != null ? aluno.getMedia() : 0.0;
 			countaMedia++;
 		}
-		turmaCommediaCalcualda.setMedia(somaMedia / countaMedia);
+		turmaCommediaCalcualda.setMedia(Double.valueOf(new DecimalFormat("#,##0.00").format(somaMedia / countaMedia)));
 		return turmaCommediaCalcualda;
 	}
 
@@ -76,7 +77,7 @@ public class TurmaService {
 				somaMedia += dss.getNota() != null ? dss.getNota() : 0.0;
 				countaMedia++;
 			}
-			aluno.setMedia(somaMedia / countaMedia);
+			aluno.setMedia(Double.valueOf(new DecimalFormat("#,##0.00").format(somaMedia / countaMedia)));
 			alunosComMediaCalculada.add(aluno);
 		}
 

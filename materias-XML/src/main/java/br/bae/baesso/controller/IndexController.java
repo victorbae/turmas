@@ -15,7 +15,7 @@ import br.com.caelum.vraptor.validator.Validator;
 
 @Path("/")
 @Controller
-public class ImportadorController {
+public class IndexController {
 
 	@Inject
 	private Result result;

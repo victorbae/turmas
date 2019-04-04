@@ -1,6 +1,5 @@
 package br.bae.baesso.service;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -60,7 +59,7 @@ public class TurmaService {
 			somaMedia += aluno.getMedia() != null ? aluno.getMedia() : 0.0;
 			countaMedia++;
 		}
-		turmaCommediaCalcualda.setMedia(Double.valueOf(new DecimalFormat("#,##0.00").format(somaMedia / countaMedia)));
+		turmaCommediaCalcualda.setMedia(arredondar(somaMedia / countaMedia, 2));
 		return turmaCommediaCalcualda;
 	}
 
@@ -77,7 +76,7 @@ public class TurmaService {
 				somaMedia += dss.getNota() != null ? dss.getNota() : 0.0;
 				countaMedia++;
 			}
-			aluno.setMedia(Double.valueOf(new DecimalFormat("#,##0.00").format(somaMedia / countaMedia)));
+			aluno.setMedia(arredondar(somaMedia / countaMedia, 2));
 			alunosComMediaCalculada.add(aluno);
 		}
 
@@ -113,6 +112,14 @@ public class TurmaService {
 //
 //		return new Disciplinas(disciplinasComMediaCalculada);
 //	}
+
+	private double arredondar(double valor, int casas) {
+		double arredondado = valor;
+		arredondado *= (Math.pow(10, casas));
+		arredondado = Math.floor(arredondado);
+		arredondado /= (Math.pow(10, casas));
+		return arredondado;
+	}
 
 	private Long geraCodigo() {
 		Random rd = new Random();

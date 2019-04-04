@@ -1,10 +1,10 @@
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c' %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="ISO-8859-1">
+		<meta charset="UTF-8">
 		<title>Classes</title>
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
@@ -41,14 +41,14 @@
 			
 			<div class="row justify-content-sm-center">
 				<div class="col-md-9">
-					<c:forEach items="${turma.alunos.alunos}" var="aluno">
+					<c:forEach items="${turma.alunos.alunos}" var="aluno" varStatus="index">
 						<table class="table table-striped table-bordered table-hover">
-							<thead>
-								<tr>
-									<th colspan="2" class="col-xs-8">Nome</th>
-									<th scope="col" class="col-xs-4">Media</th>
-								</tr>
-							</thead>
+								<thead>
+									<tr>
+										<th colspan="2" class="col-xs-8">Nome / Matérias</th>
+										<th scope="col" class="col-xs-4">Media</th>
+									</tr>
+								</thead>
 							<tbody>
 								<tr class="pega-clique table-primary">
 									<td colspan="2" >${aluno.nome}</td>

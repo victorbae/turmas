@@ -18,13 +18,13 @@ public class ImportadorService {
 	@Inject
 	private TurmaService turmaService;
 
-	ConversorXML<Turma> conversor = new ConversorXML<>(Turma.class);
+	ConversorXML<Turma> conversorUmaTurma = new ConversorXML<>(Turma.class);
 
 	public void importa(UploadedFile arquivo) throws IOException {
 
 		String xmlS = IOUtils.toString(arquivo.getFile());
 
-		Turma turma = conversor.geraObj(new StringReader(xmlS));
+		Turma turma = conversorUmaTurma.geraObj(new StringReader(xmlS));
 
 		turmaService.salvar(turma);
 	}

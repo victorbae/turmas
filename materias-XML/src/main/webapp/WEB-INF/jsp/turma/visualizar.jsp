@@ -20,7 +20,7 @@
 	</style>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" >Diario de Classe <i class="fas fa-tree"></i></a>
+			<a class="navbar-brand" >Diario de Classe <i class="fas fa-chalkboard-teacher"></i></a>
 		  	<div class="" id="navbarNav">
 		    <ul class="navbar-nav">
 		      <li class="nav-item">
@@ -39,17 +39,17 @@
 				<h2 class="display-4 text-center" style="margin-top: 33px; margin-bottom: 6px;">Classe ${turma.nome}</h2>
 			</div>	
 			<div class="row justify-content-sm-center">
-				<h4 class="h4 text-center" style="margin-top: 6px; margin-bottom: 3px;">Média da turma: ${turma.media}</h4>
+				<h4 class="h4 text-center font-weight-light" style="margin-top: 6px; margin-bottom: 3px;">Média da classe: ${turma.media}</h4>
 			</div>	
 			
 			<div class="row justify-content-sm-center"  style="margin-top: 6px; margin-bottom: 9px;">
 				<div class="col">
-				<h3 class="h3 text-center">Disciplinas</h3>
+				<h3 class="h3 text-center font-weight-light">Disciplinas</h3>
 					<table class="table table-striped table-bordered table-hover">
 							<thead>
 								<tr>
-									<th class="col-xs-8">Disciplinas</th>
-									<th class="col-xs-8">Médias</th>
+									<th class="col-xs-8 font-weight-light">Disciplinas</th>
+									<th class="col-xs-8 font-weight-light">Médias</th>
 								</tr>
 							</thead>
 						<tbody>
@@ -63,12 +63,12 @@
 					</table>
 				</div>				
 				<div class="col">
-				<h3 class="h3 text-center">Alunos</h3>
+				<h3 class="h3 text-center font-weight-light">Alunos</h3>
 					<c:forEach items="${turma.alunos.alunos}" var="aluno" varStatus="index">
 						<table class="table table-striped table-bordered table-hover">
 								<thead>
 									<tr>
-										<th colspan="3" class="col-xs-8">Aluno / Disciplinas</th>
+										<th colspan="3" class="col-xs-8 font-weight-light">Aluno / Disciplinas</th>
 									</tr>
 								</thead>
 							<tbody>
@@ -89,4 +89,7 @@
 			</div>	
 		</div>
 	</body>
+	<footer class="text-center" style="margin-top: 66px;">
+		<a href="https://www.facebook.com/victhor.baesso" target="_BLANK" class="nav-link">João Victor Baesso®</a>
+	</footer>
 </html>

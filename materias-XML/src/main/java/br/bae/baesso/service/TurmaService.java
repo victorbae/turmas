@@ -1,10 +1,11 @@
 package br.bae.baesso.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-import java.util.TreeSet;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -44,37 +45,27 @@ public class TurmaService {
 
 	public Turma buildTurma(Turma turma) {
 		Turma turmaPunk = new Turma();
-		Set<Disciplina> meupau = new TreeSet<>();
 
-		for (Aluno aluno : turma.getAlunos().getAlunos()) {
-			for (Disciplina disciplina : aluno.getDisciplinas().getDisciplina()) {
-				meupau.add(disciplina);
-			}
-		}
+		turmaPunk.setNome(turma.getNome());
+		turmaPunk.setAlunos(buildMediaAluno(turma.getAlunos()));
+		turmaPunk.setMedia(buildMediaTurma(turmaPunk.getAlunos()));
+		turmaPunk.setDisciplinas(buildMediaDisciplina(turma.getAlunos()));
 
-		turmaPunk = calculaMediaTurma(turma);
-		turmaPunk.setAlunos(calculaMediaCadaAluno(turma.getAlunos()));
-		// TODO turmaPunk.calculaMediaDisciplina(turma.getAlunos());
-
-		turmaPunk.setDisciplinas(meupau);
 		return turmaPunk;
 	}
 
-	private Turma calculaMediaTurma(Turma turma) {
-		Turma turmaCommediaCalcualda = turma;
-
+	private Double buildMediaTurma(Alunos alunos) {
 		Double somaMedia = 0.0;
 		Integer countaMedia = 0;
 
-		for (Aluno aluno : turma.getAlunos().getAlunos()) {
+		for (Aluno aluno : alunos.getAlunos()) {
 			somaMedia += aluno.getMedia() != null ? aluno.getMedia() : 0.0;
 			countaMedia++;
 		}
-		turmaCommediaCalcualda.setMedia(arredondar(somaMedia / countaMedia, 2));
-		return turmaCommediaCalcualda;
+		return arredondar(somaMedia / countaMedia, 2);
 	}
 
-	private Alunos calculaMediaCadaAluno(Alunos alunos) {
+	private Alunos buildMediaAluno(Alunos alunos) {
 		List<Aluno> alunosComMediaCalculada = new ArrayList<>();
 
 		Double somaMedia = 0.0;
@@ -94,35 +85,35 @@ public class TurmaService {
 		return new Alunos(alunosComMediaCalculada);
 	}
 
-//	private Disciplinas calculaMediaDisciplina(Alunos alunos) {
-//		List<Disciplina> disciplinasComMediaCalculada = new ArrayList<>();
-//		List<DisciplinaAux> listaAux = new ArrayList<>();
-//
-//		boolean jaCalculada = false;
-//
-//		for (Aluno aluno : alunos.getAlunos()) {
-//			for (Disciplina dss : aluno.getDisciplinas().getDisciplina()) {
-//				jaCalculada = false;
-//				DisciplinaAux novaAuxiliar = new DisciplinaAux();
-//
-//				novaAuxiliar.setCodDisciplina(dss.getCodigo());
-//
-//				for (DisciplinaAux dssAux : listaAux) {
-//					if (dssAux.getCodDisciplina().equals(dss.getCodigo())) {
-//						dssAux.setSomaNotas(dssAux.getSomaNotas() + dss.getNota());
-//						dssAux.setCountNotas(dssAux.getCountNotas() + 1);
-//					}
-//					if (!jaCalculada) {
-//						novaAuxiliar.setSomaNotas(dss.getNota());
-//						novaAuxiliar.setCountNotas(1);
-//						listaAux.add(novaAuxiliar);
-//					}
-//				}
-//			}
-//		}
-//
-//		return new Disciplinas(disciplinasComMediaCalculada);
-//	}
+	private Set<Disciplina> buildMediaDisciplina(Alunos alunos) {
+		Set<Disciplina> listaFinal = new HashSet<>();
+		HashMap<Long, Disciplina> mapDisciplinas = new HashMap<>();
+		Disciplina dissAux;
+
+		for (Aluno aluno : alunos.getAlunos()) {
+			for (Disciplina disciplina : aluno.getDisciplinas().getDisciplina()) {
+				if (mapDisciplinas.containsKey(disciplina.getCodigo())) {
+
+					dissAux = mapDisciplinas.get(disciplina.getCodigo());
+					double notaNova = disciplina.getNota() != null ? disciplina.getNota() : 0.0;
+
+					dissAux.setMedia((dissAux.getMedia() + notaNova) / 2);
+					mapDisciplinas.put(disciplina.getCodigo(), dissAux);
+				} else {
+					disciplina.setMedia(disciplina.getNota() != null ? disciplina.getNota() : 0.0);
+					mapDisciplinas.put(disciplina.getCodigo(), disciplina);
+
+					listaFinal.add(disciplina);
+				}
+			}
+		}
+
+		for (Disciplina disciplina : listaFinal) {
+			disciplina.setMedia(mapDisciplinas.get(disciplina.getCodigo()).getMedia());
+		}
+
+		return listaFinal;
+	}
 
 	private double arredondar(double valor, int casas) {
 		double arredondado = valor;

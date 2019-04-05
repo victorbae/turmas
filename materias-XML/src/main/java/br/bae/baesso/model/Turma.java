@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,6 +19,7 @@ import lombok.Setter;
 @XmlRootElement
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(of = "codigo")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Turma {
 

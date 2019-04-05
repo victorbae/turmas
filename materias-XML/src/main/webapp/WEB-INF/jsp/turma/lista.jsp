@@ -51,7 +51,7 @@
 	</script>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" >Diario de Classe <i class="fas fa-tree"></i></a>
+			<a class="navbar-brand" >Diario de Classe <i class="fas fa-chalkboard-teacher"></i></a>
 		  	<div class="" id="navbarNav">
 		    <ul class="navbar-nav">
 		      <li class="nav-item">
@@ -68,22 +68,22 @@
 				<h2 class="display-3 text-center" style="margin-top: 33px; margin-bottom: 33px;">Classes</h2>
 			</div>
 			<div class="row justify-content-sm-center">
-				<div class="col-sm-8 text-left">
+				<div class="col-sm-12 col-md-8 text-left">
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Importar" style="margin-bottom: 12px;">Adicionar Classe</button>
 				</div>
 			</div>
 			<div class="row justify-content-sm-center">
-				<div class="col-sm-8 text-center">
+				<div class="col-sm-12 col-md-8 text-center">
 					<table class="table table-striped table-bordered  table-hover">
 					  <thead>
 					    <tr>
-					      <th colspan="2">Classes</th>
+					      <th  colspan="2">Classes</th>
 					    </tr>
 					  </thead>
 					  <tbody>
 						  <c:forEach items="${turmaList}" var="turma">
 						    <tr class="pega-clique">
-						      <td onclick="location.href='<c:url value="/turma/visualizar/${turma.codigo}"/>'">${turma.nome}</td>
+						      <td onclick="location.href='<c:url value="/turma/visualizar/${turma.codigo}"/>'">${turma.nome} &nbsp; &nbsp; &nbsp;</td>
 						      <td>
 						      	<button type="button" class="btn btn-outline-danger btn-sm" onclick="location.href='<c:url value="/turma/excluir/${turma.codigo}"/>'">
 						      		Excluir
@@ -123,7 +123,6 @@
 						</div>
 						<!-- COMPONENT END -->
 						<div class="form-group text-right">
-							<button type="reset" class="btn btn-danger">Limpar</button>
 							<button type="submit" class="btn btn-success pull-right">Importar</button>
 						</div>
 					</form>
@@ -131,10 +130,8 @@
 		    </div>
 		  </div>
 		</div>
-		
-		
-		<footer class="text-center" style="margin-top: 33px;">
-			<a href="https://www.facebook.com/victhor.baesso" target="_BLANK" class="nav-link">João Victor Baesso®</a>
-		</footer>
 	</body>
+	<footer class="text-center" style="margin-top: 66px;">
+		<a href="https://www.facebook.com/victhor.baesso" target="_BLANK" class="nav-link">João Victor Baesso®</a>
+	</footer>
 </html>

@@ -7,6 +7,8 @@
 <h5>Database: materias</h5>
 <h5>Collection: turmas</h5>
 
+<h6>***Obs: JDK 1.8</h6>
+
 <h3>UNOESC- Xanxere</h3>
 
 ***Todos os direitos reservados Joao Victor Baesso®***

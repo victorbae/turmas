@@ -4,16 +4,26 @@ public class TesteManual {
 
 	public static void main(String[] args) {
 
-//		Disciplina ds = new Disciplina(6l, "quimica", 9.5);
-//		Disciplina ds2 = new Disciplina(9l, "matematica", 9.5);
-//		Disciplina ds3 = new Disciplina(3l, "portugues", 9.5);
-//		Disciplinas dss = new Disciplinas(Arrays.asList(ds, ds2, ds3));
-//		Aluno al = new Aluno("Animal 9", dss);
-//		Aluno al2 = new Aluno("Animal 3", dss);
-//		Aluno al3 = new Aluno("Animal 6", dss);
+//		Disciplina disciplina1 = new Disciplina(6l, "quimica", 7.5, 0.0);
+//		Disciplina disciplina2 = new Disciplina(9l, "matematica", 8.5, 0.0);
+//		Disciplina disciplina3 = new Disciplina(3l, "portugues", 10.0, 0.0);
+//		Disciplinas disciplinas1 = new Disciplinas(Arrays.asList(disciplina1, disciplina2, disciplina3));
+//		Aluno aluno1 = new Aluno(9l, "Animal 9", disciplinas1, 0.0);
 //
-//		Alunos als = new Alunos(Arrays.asList(al, al2, al3));
-//		Turma tr = new Turma("TADS", als);
+//		Disciplina disciplina4 = new Disciplina(6l, "quimica", 7.0, 0.0);
+//		Disciplina disciplina5 = new Disciplina(9l, "matematica", 6.5, 0.0);
+//		Disciplina disciplina6 = new Disciplina(3l, "portugues", 10.0, 0.0);
+//		Disciplinas disciplinas2 = new Disciplinas(Arrays.asList(disciplina4, disciplina5, disciplina6));
+//		Aluno aluno2 = new Aluno(3l, "Animal 3", disciplinas2, 0.0);
+//
+//		Disciplina disciplina7 = new Disciplina(6l, "quimica", 9.0, 0.0);
+//		Disciplina disciplina8 = new Disciplina(9l, "matematica", 8.0, 0.0);
+//		Disciplina disciplina9 = new Disciplina(3l, "portugues", 7.5, 0.0);
+//		Disciplinas disciplinas3 = new Disciplinas(Arrays.asList(disciplina7, disciplina8, disciplina9));
+//		Aluno aluno3 = new Aluno(6l, "Animal 6", disciplinas3, 0.0);
+//
+//		Alunos als = new Alunos(Arrays.asList(aluno1, aluno2, aluno3));
+//		Turma tr = new Turma(9l, "TADS", als, 0.0, new HashSet<Disciplina>());
 //
 //		ConversorXML<Turma> conversor = new ConversorXML<>(Turma.class);
 //
@@ -31,6 +41,6 @@ public class TesteManual {
 //				System.out.println(d.getNome());
 //			}
 //		}
-//
+
 	}
 }

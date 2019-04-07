@@ -34,7 +34,8 @@ public class IndexController {
 		} catch (Exception e) {
 			e.printStackTrace();
 
-			result.include("erro", "Arquivo inválido");
+			result.include("erro",
+					"Ocorreu um erro inesperado.<br/> Verifique o arquivo, ou contate o suporte (99917-3453)");
 			result.redirectTo(this).index();
 		}
 

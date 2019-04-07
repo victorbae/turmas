@@ -32,6 +32,10 @@ public class Disciplina implements Comparable<Disciplina> {
 
 	private Double media;
 
+	private Double somaNotas;
+
+	private Integer qntNotas;
+
 	@Override
 	public int compareTo(Disciplina o) {
 		if (this.codigo < o.getCodigo()) {

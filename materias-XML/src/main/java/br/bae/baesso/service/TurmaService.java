@@ -95,22 +95,24 @@ public class TurmaService {
 				if (mapDisciplinas.containsKey(disciplina.getCodigo())) {
 
 					dissAux = mapDisciplinas.get(disciplina.getCodigo());
-					double notaNova = disciplina.getNota() != null ? disciplina.getNota() : 0.0;
 
-					dissAux.setMedia((dissAux.getMedia() + notaNova) / 2);
+					dissAux.setQntNotas(dissAux.getQntNotas() + 1);
+					dissAux.setSomaNotas(
+							dissAux.getSomaNotas() + (disciplina.getNota() != null ? disciplina.getNota() : 0.0));
 					mapDisciplinas.put(disciplina.getCodigo(), dissAux);
 				} else {
-					disciplina.setMedia(disciplina.getNota() != null ? disciplina.getNota() : 0.0);
+					disciplina.setQntNotas(1);
+					disciplina.setSomaNotas(disciplina.getNota());
 					mapDisciplinas.put(disciplina.getCodigo(), disciplina);
-
-					listaFinal.add(disciplina);
 				}
 			}
 		}
 
-		for (Disciplina disciplina : listaFinal) {
-			disciplina.setMedia(mapDisciplinas.get(disciplina.getCodigo()).getMedia());
-		}
+		listaFinal.addAll(mapDisciplinas.values());
+
+		listaFinal.forEach(disciplina -> {
+			disciplina.setMedia(arredondar(disciplina.getSomaNotas() / disciplina.getQntNotas(), 2));
+		});
 
 		return listaFinal;
 	}
